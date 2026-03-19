@@ -4,7 +4,7 @@ Prebuilt Windows wheel for xFormers, built from official upstream `facebookresea
 
 ## Published Wheel
 
-- Filename: `xformers-0.0.33.post2-1torch2.9.1cu130cuda13.2triton3.6.0.post26-cp39-abi3-win_amd64.whl`
+- Filename: `xformers-0.0.33.post2-torch2.9.1cu130cuda13.2triton3.6.0.post26-cp39-abi3-win_amd64.whl`
 - Package version: `xformers==0.0.33.post2`
 - Python compatibility tag: `cp39-abi3-win_amd64`
 - Build/test environment provenance: Python `3.12.10`
@@ -13,6 +13,7 @@ Prebuilt Windows wheel for xFormers, built from official upstream `facebookresea
 - Triton runtime used during validation: `triton-windows==3.6.0.post26`
 - GPU architecture used for build targeting: `8.0;8.6`
 - Tested GPU: RTX 3090 (`sm_86`)
+- Published filename note: stored with a provenance filename; the canonical wheel filename is `xformers-0.0.33.post2-cp39-abi3-win_amd64.whl`
 - Size: `2,543,938` bytes
 - SHA256: `6d9cb42748e22ebbac785494920f2890424bd895d73cad5f735b68294b868dc7`
 
@@ -59,10 +60,12 @@ Important distinctions:
 ```powershell
 python -m pip install torch==2.9.1+cu130 torchvision==0.24.1+cu130 torchaudio==2.9.1+cu130 --index-url https://download.pytorch.org/whl/cu130 --extra-index-url https://pypi.org/simple
 python -m pip install triton-windows==3.6.0.post26
-python -m pip install .\xformers-0.0.33.post2-1torch2.9.1cu130cuda13.2triton3.6.0.post26-cp39-abi3-win_amd64.whl
+Copy-Item .\xformers-0.0.33.post2-torch2.9.1cu130cuda13.2triton3.6.0.post26-cp39-abi3-win_amd64.whl .\xformers-0.0.33.post2-cp39-abi3-win_amd64.whl
+python -m pip install .\xformers-0.0.33.post2-cp39-abi3-win_amd64.whl
 ```
 
 ## Notes
 
 - On this Windows stack, Triton-backed optimizations require `triton-windows`; there is no matching official `triton` package for this environment
 - Without Triton installed, the wheel still imports and works, but Triton-backed operators stay unavailable
+- The published filename is a provenance label, not a canonical wheel filename; rename or copy it to the canonical wheel filename before installing with `pip`
